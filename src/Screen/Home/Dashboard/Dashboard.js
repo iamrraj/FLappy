@@ -153,8 +153,9 @@ export class Dashboard extends Component {
                 <Marker
                   coordinate={{latitude: lastpoint[0], longitude: lastpoint[1]}}
                   title="Flatiron School Atlanta"
-                  description="This is where the magic happens!">
-                  <Image source={dotImage} style={{height: 66, width: 46}} />
+                  description="This is where the magic happens!"
+                  anchor={{x: 0.5, y: 0.1}}>
+                  <Image source={dotImage} style={{height: 55, width: 45}} />
                 </Marker>
               )}
 
