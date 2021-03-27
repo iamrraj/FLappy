@@ -162,10 +162,14 @@ const Login = ({navigation}) => {
           <View style={styles.button}>
             <TouchableOpacity
               style={styles.signIn}
-              // disabled={!isEnabled}
+              disabled={data.username.length < 3 || data.password.length < 3}
               onPress={() => navigation.navigate('HomeTab')}>
               <LinearGradient
-                colors={['#39324C', '#39324C']}
+                colors={
+                  data.username.length < 3 || data.password.length < 3
+                    ? ['#706887', '#aba4bf']
+                    : ['#39324C', '#39324C']
+                }
                 style={styles.signIn}>
                 <Text
                   style={[

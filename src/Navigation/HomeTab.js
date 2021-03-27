@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Dashboard from '../Screen/Home/Dashboard/Dashboard';
 import Profile from '../Screen/Home/Profile/Profile';
+import Guardian from '../Screen/Home/Guardian/Guardian';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -78,6 +79,30 @@ function HomeTab() {
 
               // Do something with the `navigation` object
               navigation.navigate('Home');
+            },
+          })}
+        />
+
+        <Tab.Screen
+          name="Guardian"
+          component={Guardian}
+          options={{
+            tabBarLabel: 'Guardian',
+            tabBarIcon: ({focused}) => (
+              <Ionicons
+                name={focused ? 'add-circle-outline' : 'add-circle'}
+                color={focused ? '#FF405C' : '#39324C'}
+                size={25}
+              />
+            ),
+          }}
+          listeners={({navigation, route}) => ({
+            tabPress: (e) => {
+              // Prevent default action
+              e.preventDefault();
+
+              // Do something with the `navigation` object
+              navigation.navigate('Guardian');
             },
           })}
         />

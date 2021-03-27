@@ -11,7 +11,8 @@ import ChooseFood from '../Screen/Home/Food/ChooseFood';
 import ForgetPassword from '../Screen/Auth/Password/ForgetPassword';
 import ChangePassword from '../Screen/Auth/Password/ChangePassword';
 import Home from '../Screen/StartHack/Screen/Home/Home';
-
+import Add from '../Screen/Home/Guardian/Add';
+import SendLocation from '../Screen/Home/Guardian/SendLocation';
 function Navigation1({navigation}) {
   const [age, setAge] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
@@ -82,6 +83,16 @@ function Navigation1({navigation}) {
       <AuthStack.Screen
         name="HomeTab"
         component={HomeTab}
+        options={{title: 'HomeTab', headerShown: false}}
+      />
+      <AuthStack.Screen
+        name="Add"
+        component={Add}
+        options={{title: 'HomeTab', headerShown: false}}
+      />
+      <AuthStack.Screen
+        name="Send"
+        component={SendLocation}
         options={{title: 'HomeTab', headerShown: false}}
       />
     </AuthStack.Navigator>
