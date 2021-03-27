@@ -12,16 +12,12 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-// import {getUser} from '../../Service/User';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import {useTranslation} from 'react-i18next';
-// import Language from '../../../Container/Language';
 
 function Profile(props) {
   const {navigation} = props;
   const [name, setName] = useState([]);
-  //   const [loading, setLoading] = useState(true);
   const [model, setModel] = useState(false);
   const [model1, setModel1] = useState(false);
   const [text, setText] = useState('');
@@ -78,11 +74,7 @@ function Profile(props) {
               {/* <Language /> */}
               <Text style={styles.get_touch}>Get in touch</Text>
 
-              <Text
-                style={styles.get_contact}
-                onPress={() => navigation.navigate('ChangePassword')}>
-                Change Password
-              </Text>
+              <Text style={styles.get_contact}>Change Password</Text>
               <View>
                 <Text
                   style={styles.get_contact}
@@ -99,11 +91,7 @@ function Profile(props) {
                 />
               </View>
               <Text style={styles.get_about}> About us</Text>
-              <Text
-                style={styles.get_contact}
-                onPress={() => navigation.navigate('ChangePassword')}>
-                Choose food
-              </Text>
+              <Text style={styles.get_contact}>About us</Text>
 
               <Text style={styles.get_log} onPress={loginAlert}>
                 Logout
@@ -116,7 +104,7 @@ function Profile(props) {
                   marginTop: 20,
                 }}>
                 <Text style={[styles.get_about1, {alignSelf: 'flex-start'}]}>
-                  FitRaj
+                  Stack Hack
                 </Text>
                 <Text
                   style={[

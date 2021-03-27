@@ -59,55 +59,6 @@ const Login = ({navigation}) => {
     });
   };
 
-  const handleSubmit = async () => {
-    setLoading(true);
-
-    axios({
-      method: 'post',
-      url: config.apiUrl.login,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      data: `grant_type=${GRANT_TYPE}&username=${data.username}&password=${data.password}&client_id=${CLIENT_ID}`,
-    })
-      .then(async (response) => {
-        try {
-          await AsyncStorage.setItem(
-            '@storage_Key',
-            response.data['access_token'],
-          );
-          await AsyncStorage.setItem(
-            '@storage_Key_refresh',
-            response.data['refresh_token'],
-          );
-          await AsyncStorage.setItem(
-            '@storage_Key_expire',
-            '' + response.data['expires_in'],
-          );
-          await AsyncStorage.setItem('@storage_username', '' + data.username);
-        } catch (error) {
-          console.log('AsyncStorage Error: ' + error.message);
-        }
-        setLoading(false);
-        if (await AsyncStorage.getItem('@storage_Key')) {
-          navigation.navigate('HomeTab');
-        }
-      })
-      .catch((reject) => {
-        console.log(reject.response.data);
-
-        setLoading(false);
-        console.log('Error', config.apiUrl.login);
-        Alert.alert(
-          'Login Error',
-          reject.response.data.message
-            ? reject.response.data.message
-            : reject.response.data.error_description,
-          [{text: 'Okay'}],
-        );
-      });
-  };
-
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#93278f" barStyle="light-content" />
@@ -212,7 +163,7 @@ const Login = ({navigation}) => {
             <TouchableOpacity
               style={styles.signIn}
               // disabled={!isEnabled}
-              onPress={handleSubmit}>
+              onPress={() => navigation.navigate('HomeTab')}>
               <LinearGradient
                 colors={['#39324C', '#39324C']}
                 style={styles.signIn}>
@@ -223,7 +174,7 @@ const Login = ({navigation}) => {
                       color: '#fff',
                     },
                   ]}>
-                  {loading ? 'Loading ...' : 'Log In'}
+                  Log In
                 </Text>
               </LinearGradient>
             </TouchableOpacity>

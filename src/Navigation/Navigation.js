@@ -79,6 +79,11 @@ function Navigation1({navigation}) {
         component={Home}
         options={{title: 'Home', headerShown: false}}
       />
+      <AuthStack.Screen
+        name="HomeTab"
+        component={HomeTab}
+        options={{title: 'HomeTab', headerShown: false}}
+      />
     </AuthStack.Navigator>
   );
 
@@ -91,11 +96,11 @@ function Navigation1({navigation}) {
           height: 35,
         },
       }}>
-      <MainStack.Screen
+      {/* <MainStack.Screen
         name="HomeTab"
         component={HomeTab}
         options={{title: 'HomeTab', headerShown: false}}
-      />
+      /> */}
 
       <AuthStack.Screen
         name="ChooseFood"
