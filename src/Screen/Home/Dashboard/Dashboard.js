@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {LogBox, Text, View} from 'react-native';
+import {LogBox, Image, View} from 'react-native';
 import MapView, {
   Marker,
   Polyline,
@@ -77,7 +77,7 @@ export class Dashboard extends Component {
       this.state.cord.length > 0
         ? this.state.cord[this.state.cord.length - 1]
         : this.state.start;
-
+    const dotImage = require('../../../Static/Image/girl.png');
     return (
       <>
         {this.state.loading ? (
@@ -135,7 +135,7 @@ export class Dashboard extends Component {
                   latitude: this.state.start[0],
                   longitude: this.state.start[1],
                 }}
-                radius={40}
+                radius={100}
                 strokeColor={'blue'}
                 strokeWidth={6}
                 fillColor={'#fff'}
@@ -153,7 +153,9 @@ export class Dashboard extends Component {
                 <Marker
                   coordinate={{latitude: lastpoint[0], longitude: lastpoint[1]}}
                   title="Flatiron School Atlanta"
-                  description="This is where the magic happens!"></Marker>
+                  description="This is where the magic happens!">
+                  <Image source={dotImage} style={{height: 66, width: 46}} />
+                </Marker>
               )}
 
               {speed.map((d) =>
@@ -164,8 +166,8 @@ export class Dashboard extends Component {
                       latitude: c[0],
                       longitude: c[1],
                     }))}
-                    strokeColor={c.color}
-                    strokeWidth={6}></Polyline>
+                    strokeColor={'#8f17b7'}
+                    strokeWidth={4}></Polyline>
                 )),
               )}
             </MapView>

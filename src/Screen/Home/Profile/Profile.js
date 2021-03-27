@@ -23,7 +23,7 @@ function Profile(props) {
   const [text, setText] = useState('');
 
   let image = {
-    uri: name.avatar
+    uri: '../../'
       ? name.avatar
       : 'https://www.xovi.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png',
   };
@@ -64,9 +64,12 @@ function Profile(props) {
             <Text style={styles.titleText}>Profile</Text>
 
             <View style={styles.image_section}>
-              <Image style={styles.tinyLogo} source={image} />
-              <Text style={styles.titleText_name}>Rahul Raj</Text>
-              <Text style={styles.titleText_name1}>rajr97555@gmail.com</Text>
+              <Image
+                style={styles.tinyLogo}
+                source={require('../../../Static/Image/logo.png')}
+              />
+              <Text style={styles.titleText_name}>Anna Migdal</Text>
+              <Text style={styles.titleText_name1}>anna@gmail.com</Text>
             </View>
 
             <View style={styles.list}>
