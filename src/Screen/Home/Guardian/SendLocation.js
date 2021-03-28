@@ -9,6 +9,9 @@ const SendLocation = ({navigation}) => {
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   const toggleSwitch1 = () => setIsEnabled1((previousState) => !previousState);
 
+  const [isEnabled2, setIsEnabled2] = useState(false);
+  const toggleSwitch2 = () => setIsEnabled2((previousState) => !previousState);
+
   return (
     <View style={styles.container}>
       <View style={styles.back_section}>
@@ -21,7 +24,7 @@ const SendLocation = ({navigation}) => {
       </View>
       <View style={{marginTop: 40}}>
         <Text style={{fontSize: 23, fontWeight: 'bold', textAlign: 'center'}}>
-          MOM
+          BRO ALEX
         </Text>
       </View>
 
@@ -57,6 +60,29 @@ const SendLocation = ({navigation}) => {
               tintColor="#ff0000"
               style={{marginTop: 30, transform: [{scaleX: 1.4}, {scaleY: 1.4}]}}
               value={isEnabled}
+            />
+          </View>
+        </View>
+
+        <View
+          style={[
+            styles.help_list_row,
+            {marginTop: 40, paddingLeft: 50, paddingRight: 40},
+          ]}>
+          <View style={styles.first_cell}>
+            <Text style={{fontSize: 15}}>Hours : Mins</Text>
+            <Text style={[styles.time, {fontSize: 18}]}>00 : 30</Text>
+          </View>
+          <View style={[styles.second_cell, {paddingRight: 20}]}>
+            <Switch
+              trackColor={{false: '#767577', true: '#8f17b7'}}
+              thumbColor={isEnabled2 ? 'white' : 'black'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleSwitch2}
+              thumbTintColor="#0000ff"
+              tintColor="#ff0000"
+              style={{marginTop: 30, transform: [{scaleX: 1.4}, {scaleY: 1.4}]}}
+              value={isEnabled2}
             />
           </View>
         </View>

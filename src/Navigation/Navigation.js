@@ -80,19 +80,10 @@ function Navigation1({navigation}) {
         component={Home}
         options={{title: 'Home', headerShown: false}}
       />
-      <AuthStack.Screen
-        name="HomeTab"
-        component={HomeTab}
-        options={{title: 'HomeTab', headerShown: false}}
-      />
+
       <AuthStack.Screen
         name="Add"
         component={Add}
-        options={{title: 'HomeTab', headerShown: false}}
-      />
-      <AuthStack.Screen
-        name="Send"
-        component={SendLocation}
         options={{title: 'HomeTab', headerShown: false}}
       />
     </AuthStack.Navigator>
@@ -107,18 +98,28 @@ function Navigation1({navigation}) {
           height: 35,
         },
       }}>
-      {/* <MainStack.Screen
+      <MainStack.Screen
         name="HomeTab"
         component={HomeTab}
         options={{title: 'HomeTab', headerShown: false}}
-      /> */}
+      />
+      <MainStack.Screen
+        name="Add"
+        component={Add}
+        options={{title: 'HomeTab', headerShown: false}}
+      />
+      <MainStack.Screen
+        name="Send"
+        component={SendLocation}
+        options={{title: 'HomeTab', headerShown: false}}
+      />
 
-      <AuthStack.Screen
+      <MainStack.Screen
         name="ChooseFood"
         component={ChooseFood}
         options={{title: 'ChooseFood', headerShown: false}}
       />
-      <AuthStack.Screen
+      <MainStack.Screen
         name="ChangePassword"
         component={ChangePassword}
         options={{title: 'ForgetPassword', headerShown: false}}

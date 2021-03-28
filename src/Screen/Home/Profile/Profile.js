@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 function Profile(props) {
   const {navigation} = props;
@@ -28,9 +29,38 @@ function Profile(props) {
       : 'https://www.xovi.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png',
   };
 
+  const logout = () => {
+    const value = {token: AsyncStorage.getItem('@storage_Key_refresh')};
+    console.log(value);
+    axios({
+      method: 'DELETE',
+      url: `https://sex-hack-2021.herokuapp.com/users/logout`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: value,
+    })
+      .then(async (response) => {
+        console.log(response);
+      })
+      .catch((reject) => {
+        setLoading(false);
+
+        Alert.alert(
+          'Login Error',
+          reject.response.data
+            ? reject.response.data
+            : reject.response.data.error_description,
+          [{text: 'Okay'}],
+        );
+      });
+  };
+
   const onLogout = async () => {
+    logout();
     try {
       await AsyncStorage.removeItem('@storage_Key');
+      await AsyncStorage.removeItem('@storage_Key_refresh');
       console.log(
         'Token Cleard',
         await AsyncStorage.removeItem('@storage_Key'),

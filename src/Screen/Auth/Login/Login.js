@@ -58,6 +58,52 @@ const Login = ({navigation}) => {
       secureTextEntry: !data.secureTextEntry,
     });
   };
+  const handleSubmit = async () => {
+    setLoading(true);
+    const value = {name: data.username, password: data.password};
+    console.log(value);
+    axios({
+      method: 'POST',
+      url: `https://sex-hack-2021.herokuapp.com/users/login`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: value,
+    })
+      .then(async (response) => {
+        console.log(response);
+        setLoading(false);
+        try {
+          await AsyncStorage.setItem(
+            '@storage_Key',
+            response.data['accessToken'],
+          );
+          await AsyncStorage.setItem(
+            '@storage_Key_refresh',
+            response.data['refreshToken'],
+          );
+        } catch (error) {
+          console.log('AsyncStorage Error: ' + error.message);
+        }
+
+        navigation.navigate('HomeTab');
+      })
+      .catch((reject) => {
+        console.log(reject.response.data);
+
+        setLoading(false);
+        console.log('Error', `https://sex-hack-2021.herokuapp.com/users/login`);
+
+        Alert.alert(
+          'Login Error',
+          reject.response.data
+            ? reject.response.data
+            : reject.response.data.error_description,
+          [{text: 'Okay'}],
+        );
+      });
+    console.log(data);
+  };
 
   return (
     <View style={styles.container}>
@@ -163,8 +209,10 @@ const Login = ({navigation}) => {
             <TouchableOpacity
               style={styles.signIn}
               disabled={data.username.length < 3 || data.password.length < 3}
-              onPress={() => navigation.navigate('HomeTab')}>
+              onPress={() => handleSubmit()}>
+              {/* onPress={() => navigation.navigate('HomeTab')} */}
               <LinearGradient
+                handleSubmit
                 colors={
                   data.username.length < 3 || data.password.length < 3
                     ? ['#706887', '#aba4bf']

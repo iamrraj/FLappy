@@ -31,7 +31,19 @@ const Guardian = ({navigation}) => {
               <Text style={{fontSize: 16}}>+48 765 456 782</Text>
             </View>
             <View style={[styles.second_cell, {paddingRight: 20}]}>
-              <TouchableOpacity
+              <Text style={{fontSize: 16}}>
+                Notification <Text style={{fontWeight: 'bold'}}>ON </Text>
+              </Text>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: '#8f17b7',
+                  fontWeight: 'bold',
+                  marginLeft: 0,
+                }}>
+                Every 15 mins{' '}
+              </Text>
+              {/* <TouchableOpacity
                 style={styles.help_button_Ask}
                 onPress={() => navigation.navigate('Send')}>
                 <Text
@@ -41,7 +53,7 @@ const Guardian = ({navigation}) => {
                   ]}>
                   SEND DATA
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
           </View>
 

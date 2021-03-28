@@ -1,21 +1,11 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  Switch,
-  Alert,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, TextInput, Alert, TouchableOpacity} from 'react-native';
 import styles from './styel';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Add = ({navigation}) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   const saveData = () => {
     Alert.alert(
@@ -67,15 +57,7 @@ const Add = ({navigation}) => {
           </Text>
         </View>
       </View>
-      <Switch
-        trackColor={{false: '#767577', true: '#8f17b7'}}
-        thumbColor={isEnabled ? 'white' : '#f4f3f4'}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        thumbTintColor="#0000ff"
-        tintColor="#ff0000"
-        value={isEnabled}
-      />
+
       <TouchableOpacity
         disabled={name.length < 3 || phone.length < 8}
         style={[styles.add_guardian_button, styles.add_guardian]}
